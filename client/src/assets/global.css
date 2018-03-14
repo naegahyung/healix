@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Amaranth';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./Amaranth-Regular.ttf'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans'),
+       url('./Amaranth-Regular.ttf?#iefix').format('embedded-opentype'), /* IE6-IE8 */
+       url('./Amaranth-Regular.ttf').format('truetype'), /* Safari, Android, iOS */
+}
