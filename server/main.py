@@ -29,7 +29,7 @@ CORS(app)
 client = pymongo.MongoClient()
 db = client['healix']
 
-twilio_client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+#twilio_client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 @app.route('/')
 @app.route('/signup')
@@ -40,9 +40,9 @@ twilio_client = twilio.rest.Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 @app.route('/doctor/details')
 def hello():
     test= 32
-    # return '<h1>Hello world!</h1>'
-    db['test'].insert_one({'test': test})
-    return TEMPLATE
+    return '<h1>Hello world!</h1>'
+    #db['test'].insert_one({'test': test})
+    #return TEMPLATE
 
 @app.route("/api/search", methods = ['POST'])
 def search():
@@ -150,7 +150,7 @@ def makeAppointment():
     appointmentID = str(cursor['_id'])
     doctor = betterdoctor.getDoctor("975eb48667ccb9eb20008d302685981d", doctorUID)
     _, phone = getSinglePracticeAndPhone(doctor["data"]["practices"])
-    twilio_client.api.account.calls.create(to="6467120687", from_="8189460273", url="http://165.227.114.155:5000/getVoiceMessage/" + appointmentID)
+    #twilio_client.api.account.calls.create(to="6467120687", from_="8189460273", url="http://165.227.114.155:5000/getVoiceMessage/" + appointmentID)
     #TODO: make this actually call
     appt = {'doctorId': doctorUID, 'doctorName': doctorName, 'userId':session['userId'], 'time':timeframe*1000}
     user = db.user.find_one({'username': 'admin'})
